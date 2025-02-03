@@ -4,51 +4,71 @@
 
 
 //animation variables
-float sunY,moonY;
+float sunY, moonY;
 boolean day;
 
 
 void setup() {
   size ( 800, 800);
-  sunY= 150;
+  sunY= 850;
   moonY=700;
+  day=true;
 }
 
 
 
 void draw() {
 
- if (sunY > 700) {
-    background(#243447);
-    day=!day;
-     sunY= sunY+0;
-  
-  }else {
-    background(#d4ebf2 );
-    
-      sunY= sunY+5;
-    
-      
-  }
-  
-  if(day==false ){
-   moonY=moonY+5;  
-  }else{
-    if (moonY>100){
-       moonY=moonY-5;
-    }
-  }
-  
 
- 
+
+  if (sunY < 150) {
+    //background(#243447);
+    day=false;
+  }
+
+
+  //sunY= 900;
+  //} else {
+  //  background(#d4ebf2);
+
+  //  sunY= sunY+5;
+  //}
+  if (moonY < 150) {
+
+    day=true;
+    sunY=1300;
+  }
+
+
+
+
+  if (day==false) {
+    background(#243447);
+    moonY=moonY-5;
+    sunY=sunY+5;
+  } else if (day==true) {
+    background(#d4ebf2);
+
+    moonY = moonY+5;
+    sunY=sunY-5;
+  }
+
+
+
+
+
+
+
+
+
   //sun
   fill(#FFCC33);
   circle ( 150, sunY, 100);
 
 
- 
 
- 
+
+
 
   //moon
   fill(#F6F1D5);
@@ -82,8 +102,14 @@ void draw() {
   circle(570, 630, 5);
 
   //windows
+
+  if (day==true) {
+    fill(255);
+  } else {
+    fill(255, 200, 0  );
+  }
   square (600, 500, 50);
-  fill(0);
+
   stroke(5);
   line ( 625, 500, 625, 550);
   stroke(5);
